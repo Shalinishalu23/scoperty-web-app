@@ -8,9 +8,10 @@
             <h3>The Pre-Market for Real Estate</h3>
             <div fxFlex fxLayout='row' fxLayoutAlign='flex-end'>
                 <ul fxLayout='row' fxLayout='20px'>
-
-                    <li>Dark
-                        <mat-slide-toggle (change)="onDarkModeSwitched($event)"></mat-slide-toggle>
+                    <li>
+                        <mat-icon>brightness_medium</mat-icon>
+                        <mat-slide-toggle [checked]="isPrint" (change)="onDarkModeSwitched($event)">
+                        </mat-slide-toggle>
                     </li>
                     <li>
                         <div id="google_translate_element"></div>

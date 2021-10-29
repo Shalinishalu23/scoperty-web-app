@@ -12,7 +12,7 @@ import { Configuration } from './config/app-settings.config';
 import { FeaturesModule } from './features/features.module';
 import { LoginComponent } from './login/login.component';
 import { UtilityService } from './services/utility.service';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
+// import { PdfViewerModule } from 'ng2-pdf-viewer';
 /**
  *
  *
@@ -31,7 +31,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     ReactiveFormsModule,
     HttpClientModule,
     TableModule,
-    PdfViewerModule
+    // PdfViewerModule,
   ],
   providers: [
     Configuration,

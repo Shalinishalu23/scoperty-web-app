@@ -1,4 +1,10 @@
-import { Component, EventEmitter, OnInit, Output,ElementRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ElementRef,
+} from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Router } from '@angular/router';
 
@@ -12,10 +18,10 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter
+  @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
   @Output() darkModeSwitched: EventEmitter<any> = new EventEmitter<boolean>();
 
   /**
@@ -23,7 +29,8 @@ export class HeaderComponent implements OnInit {
    * @param {Router} router
    * @memberof HeaderComponent
    */
-  constructor(public router: Router, public elementRef: ElementRef,) { }
+  constructor(public router: Router, public elementRef: ElementRef) {}
+  isPrint: boolean = false;
 
   /**
    *
@@ -32,19 +39,25 @@ export class HeaderComponent implements OnInit {
    */
   ngOnInit() {
     // below for refresh toggle to set local stroage
-     this.darkModeSwitched.emit(localStorage.getItem('theme') === 'theme-dark' ? false : true)
+    this.isPrint =
+      localStorage.getItem('theme') === 'theme-dark' ? true : false;
+    this.darkModeSwitched.emit(
+      localStorage.getItem('theme') === 'theme-dark' ? true : false
+    );
   }
 
   ngAfterViewInit() {
-    var v = document.createElement("script");
-    v.type = "text/javascript";
-    v.innerHTML = "function googleTranslateElementInit() { new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element'); } ";
+    var v = document.createElement('script');
+    v.type = 'text/javascript';
+    v.innerHTML =
+      "function googleTranslateElementInit() { new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element'); } ";
     this.elementRef.nativeElement.appendChild(v);
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.src =
+      '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
     this.elementRef.nativeElement.appendChild(s);
-}
+  }
 
   /**
    *
@@ -52,7 +65,7 @@ export class HeaderComponent implements OnInit {
    * @memberof HeaderComponent
    */
   toggleSideBar() {
-    this.toggleSideBarForMe.emit()
+    this.toggleSideBarForMe.emit();
   }
 
   /**
@@ -65,7 +78,6 @@ export class HeaderComponent implements OnInit {
     //check below session clear again
     localStorage.clear();
     this.router.navigate(['/']);
-
   }
 
   /**
@@ -76,8 +88,8 @@ export class HeaderComponent implements OnInit {
    */
   onDarkModeSwitched({ checked }: MatSlideToggleChange) {
     // below for refresh toggle to get local stroage
-    localStorage.setItem('theme', checked ? 'theme-dark' : 'theme-light')
+    localStorage.setItem('theme', checked ? 'theme-dark' : 'theme-light');
     // console.log('toggle', checked)
-    this.darkModeSwitched.emit(checked)
+    this.darkModeSwitched.emit(checked);
   }
 }

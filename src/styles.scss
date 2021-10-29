@@ -2,23 +2,7 @@
 @include mat-core();
 // custom color
 $mat-light-theme-background: (
-    // status-bar: map_get($mat-grey, 300),
-    // app-bar:    map_get($mat-grey, 100),
-    // background: map_get($mat-grey, 50),
-    // hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
-    // hover: #e4551f,
     hover: #3dc988,
-    // card:      map_get($mat-indigo, 200),
-    // dialog:     white,
-    // disabled-button: rgba(black, 0.12),
-    // raised-button: white,
-    // focused-button: $dark-focused,
-    // selected-button: map_get($mat-grey, 300),
-    // selected-disabled-button: map_get($mat-grey, 400),
-    // disabled-button-toggle: map_get($mat-grey, 200),
-    // unselected-chip: map_get($mat-grey, 300),
-    // disabled-list-option: map_get($mat-grey, 200),
-    // tooltip: map_get($mat-grey, 700),
 );
 $collins-web-app-primary: mat-palette($mat-grey, 900);
 $collins-web-app-accent: mat-palette($mat-deep-orange, A400);
@@ -82,8 +66,10 @@ mat-card.header {
 
 .theme-light .mat-card {
 }
-.theme-light .mat-input-element, input.mat-input-element, textarea.mat-input-element{
-    color:#000;
+.theme-light .mat-input-element,
+input.mat-input-element,
+textarea.mat-input-element {
+    color: #000;
 }
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
@@ -259,13 +245,12 @@ mat-nav-list.saveForm {
         margin-bottom: 5px;
         font-size: 16px;
     }
-     ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
         padding-bottom: 0.5em !important;
     }
     //**Form footer styles**//
-     ::ng-deep .mat-list-item,
-     ::ng-deep .mat-list-item:hover {
+    ::ng-deep .mat-list-item,
+    ::ng-deep .mat-list-item:hover {
         color: #fff;
     }
-
 }

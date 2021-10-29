@@ -75,7 +75,7 @@ export class DataInputComponent implements OnInit {
 
   ngOnInit(): void {
     this.pageName = this.router.url.split('/').pop();
-    this.getRecords();
+    // this.getRecords();
   }
 
   /**

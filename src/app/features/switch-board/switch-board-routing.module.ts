@@ -11,121 +11,121 @@ const routes: Routes = [
     path: '',
     component: SwitchBoardComponent,
   },
-  {
-    path: 'mainexpand',
-    component: DataInputComponent,
-    // component: DatainputDynamicFormComponent,
-    // children: [
-    //   {
-    //     path: 'mainexpand',
-    //     component: DatainputDynamicFormComponent
-    //   }
-    // ]
-  },
-  {
-    path: 'drawingreview',
-    component: DataInputComponent,
-  },
-  {
-    path: 'designreview',
-    component: DataInputComponent,
-  },
-  {
-    path: 'failureanalysis',
-    component: DataInputComponent,
-  },
-  {
-    path: 'heatexchange',
-    component: DataInputComponent,
-  },
-  {
-    path: 'componentspecific',
-    component: DataInputComponent,
-  },
-  {
-    path: 'metallicdesign',
-    component: DataInputComponent,
-  },
-  {
-    path: 'supplierrequest',
-    component: DataInputComponent,
-  },
-  {
-    path: 'specification',
-    component: DataInputComponent,
-  },
-  {
-    path: 'turnbacks',
-    component: ToolboxDynamicFormComponent,
-  },
-  {
-    path: 'memos',
-    component: ToolboxDynamicFormComponent,
-  },
-  {
-    path: 'lwr',
-    component: ToolboxDynamicFormComponent,
-  },
-  {
-    path: 'micro',
-    component: ToolboxDynamicFormComponent,
-  },
-  {
-    path: 'utrc',
-    component: ToolboxDynamicFormComponent,
-  },
-  {
-    path: 'poc',
-    component: ToolboxDynamicFormComponent,
-  },
-  {
-    path: 'hardware',
-    component: ToolboxDynamicFormComponent,
-  },
-  {
-    path: 'hser',
-    component: ToolboxDynamicFormComponent,
-  },
-  {
-    path: 'searchDrawingReview',
-    component: SearchDynamicFormComponent,
-  },
-  {
-    path: 'searchMemo',
-    component: SearchDynamicFormComponent,
-  },
-  {
-    path: 'searchTurnBack',
-    component: SearchDynamicFormComponent,
-  },
-  {
-    path: 'pst',
-    component: ReportDynamicFormComponent,
-  },
-  {
-    path: 'qcpc',
-    component: ReportDynamicFormComponent,
-  },
-  {
-    path: 'keyprocess',
-    component: ReportDynamicFormComponent,
-  },
-  {
-    path: 'myjobs',
-    component: ReportDynamicFormComponent,
-  },
-  {
-    path: 'alljobs',
-    component: ReportDynamicFormComponent,
-  },
-  {
-    path: 'montlydr',
-    component: ReportDynamicFormComponent,
-  },
-  {
-    path: 'psr',
-    component: ReportDynamicFormComponent,
-  },  
+  // {
+  //   path: 'mainexpand',
+  //   component: DataInputComponent,
+  //   // component: DatainputDynamicFormComponent,
+  //   // children: [
+  //   //   {
+  //   //     path: 'mainexpand',
+  //   //     component: DatainputDynamicFormComponent
+  //   //   }
+  //   // ]
+  // },
+  // {
+  //   path: 'drawingreview',
+  //   component: DataInputComponent,
+  // },
+  // {
+  //   path: 'designreview',
+  //   component: DataInputComponent,
+  // },
+  // {
+  //   path: 'failureanalysis',
+  //   component: DataInputComponent,
+  // },
+  // {
+  //   path: 'heatexchange',
+  //   component: DataInputComponent,
+  // },
+  // {
+  //   path: 'componentspecific',
+  //   component: DataInputComponent,
+  // },
+  // {
+  //   path: 'metallicdesign',
+  //   component: DataInputComponent,
+  // },
+  // {
+  //   path: 'supplierrequest',
+  //   component: DataInputComponent,
+  // },
+  // {
+  //   path: 'specification',
+  //   component: DataInputComponent,
+  // },
+  // {
+  //   path: 'turnbacks',
+  //   component: ToolboxDynamicFormComponent,
+  // },
+  // {
+  //   path: 'memos',
+  //   component: ToolboxDynamicFormComponent,
+  // },
+  // {
+  //   path: 'lwr',
+  //   component: ToolboxDynamicFormComponent,
+  // },
+  // {
+  //   path: 'micro',
+  //   component: ToolboxDynamicFormComponent,
+  // },
+  // {
+  //   path: 'utrc',
+  //   component: ToolboxDynamicFormComponent,
+  // },
+  // {
+  //   path: 'poc',
+  //   component: ToolboxDynamicFormComponent,
+  // },
+  // {
+  //   path: 'hardware',
+  //   component: ToolboxDynamicFormComponent,
+  // },
+  // {
+  //   path: 'hser',
+  //   component: ToolboxDynamicFormComponent,
+  // },
+  // {
+  //   path: 'searchDrawingReview',
+  //   component: SearchDynamicFormComponent,
+  // },
+  // {
+  //   path: 'searchMemo',
+  //   component: SearchDynamicFormComponent,
+  // },
+  // {
+  //   path: 'searchTurnBack',
+  //   component: SearchDynamicFormComponent,
+  // },
+  // {
+  //   path: 'pst',
+  //   component: ReportDynamicFormComponent,
+  // },
+  // {
+  //   path: 'qcpc',
+  //   component: ReportDynamicFormComponent,
+  // },
+  // {
+  //   path: 'keyprocess',
+  //   component: ReportDynamicFormComponent,
+  // },
+  // {
+  //   path: 'myjobs',
+  //   component: ReportDynamicFormComponent,
+  // },
+  // {
+  //   path: 'alljobs',
+  //   component: ReportDynamicFormComponent,
+  // },
+  // {
+  //   path: 'montlydr',
+  //   component: ReportDynamicFormComponent,
+  // },
+  // {
+  //   path: 'psr',
+  //   component: ReportDynamicFormComponent,
+  // },
 ];
 
 /**

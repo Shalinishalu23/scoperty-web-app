@@ -1,4 +1,4 @@
-# CollinsWebApp  
+# CollinsWebApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.6.
 
@@ -30,7 +30,6 @@ Run `npm i sonarqube-scanner` for sonar package installation Run `npm run sonar`
 
 ## Authors
 Shalini M - shalini.m@Ltts.com
-Kavya B Shetty- KavyaB.Shetty@Ltts.com
 
 ## To find unused imports
 1) Install "npm install -g typescript tslint tslint-etc"

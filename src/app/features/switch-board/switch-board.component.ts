@@ -39,32 +39,24 @@ export class SwitchBoardComponent implements OnInit {
    * @memberof SwitchBoardComponent
    */
   ngOnInit(): void {
-    this.loadDropdownData();
+    // this.loadDropdownData();
   }
   dataInput = [
-    { name: 'Main Expanded Input Form', formName: 'mainexpand' },
-    { name: 'Drawing Review Form', formName: 'drawingreview' },
-    { name: 'Design Review Form', formName: 'designreview' },
-    { name: 'Failure Analysis Form', formName: 'failureanalysis' },
-    { name: 'Heat Exchanger Certification Form', formName: 'heatexchange' },
-    { name: 'Component Specific Process Form', formName: 'componentspecific' },
-    { name: 'Metallic Design Limits', formName: 'metallicdesign' },
-    { name: 'SRI Form', formName: 'supplierrequest' },
+    { name: '17,896,200 House numbers', formName: 'mainexpand' },
+    { name: '1,072,734 Streets', formName: 'drawingreview' },
+    { name: '11,579 Municipalities', formName: 'designreview' },
+    { name: '388 Counties', formName: 'failureanalysis' },
   ];
   reports = [
-    { name: 'PST Reports', formName: 'pst' },
-    { name: 'My Open Jobs Report', formName: 'myjobs' },
-    { name: 'All open Jobs Report', formName: 'alljobs' },
-    { name: 'Monthly Drawing Review', formName: 'montlydr' },
-    { name: 'Department QCPC Reports', formName: 'qcpc' },
-    { name: 'Key Process Metric Reports', formName: 'keyprocess' },
+    { name: 'Compare your neighborhood estimates', formName: 'pst' },
+    { name: 'Find your pre-sale offers & Discover now ', formName: 'myjobs' },
+    { name: 'Sell ​​right with Scoperty by your side', formName: 'alljobs' },
+
   ];
   search = [
-    { name: 'Drawing Review', formName: 'searchDrawingReview' },
-    { name: 'Memos', formName: 'searchMemo' },
-    { name: 'Turn Backs', formName: 'searchTurnBack' },
+    { name: 'Near by', formName: 'searchDrawingReview' },
   ];
-  tools = [{ name: 'Specification', formName: 'specification' }];
+  tools = [{ name: 'Services', formName: 'specification' }];
   lastClickedIndex;
 
   /**
@@ -85,7 +77,7 @@ export class SwitchBoardComponent implements OnInit {
    * @memberof SwitchBoardComponent
    */
   loadDropdownData() {
-    
+
     if (!this.globalVariableService.getPriorityDD())
       this.getDropdownData('getPriority');
     if (!this.globalVariableService.getInputFromDD())

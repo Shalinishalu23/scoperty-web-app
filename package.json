@@ -1,6 +1,6 @@
 {
   "name": "collins-web-app",
-  "version": "v2.5.0",
+  "version": "v1.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

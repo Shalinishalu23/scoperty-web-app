@@ -7,7 +7,7 @@ $mat-light-theme-background: (
     // background: map_get($mat-grey, 50),
     // hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
     // hover: #e4551f,
-    hover: #f76934,
+    hover: #3dc988,
     // card:      map_get($mat-indigo, 200),
     // dialog:     white,
     // disabled-button: rgba(black, 0.12),
@@ -20,7 +20,7 @@ $mat-light-theme-background: (
     // disabled-list-option: map_get($mat-grey, 200),
     // tooltip: map_get($mat-grey, 700),
 );
-$collins-web-app-primary: mat-palette($mat-grey, 900);
+$collins-web-app-primary: mat-palette($mat-light-green, 900);
 $collins-web-app-accent: mat-palette($mat-deep-orange, A400);
 $collins-web-app-warn: mat-palette($mat-red);
 // direct set  background color
@@ -217,7 +217,7 @@ mat-nav-list.saveForm {
     // padding: 0;
     // margin-bottom: 0 5px 0 15px;
     // background: linear-gradient(to right, #5d5d5d, #0a0a0a);
-    // background: #f76934;
+    // background: #3dc988;
 }
 
 .saveForm {

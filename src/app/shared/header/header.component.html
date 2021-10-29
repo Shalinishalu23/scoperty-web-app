@@ -1,0 +1,40 @@
+<div fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-toolbar color='primary'>
+        <mat-toolbar-row>
+            <button mat-icon-button (click)='toggleSideBar()'>
+                <mat-icon>menu</mat-icon>
+            </button>
+            <!-- <span> <img alt="Collins Logo" src="/assets/img/collins_logo.png" /></span> -->
+            <h3>The pre-market for real estate</h3>
+            <div fxFlex fxLayout='row' fxLayoutAlign='flex-end'>
+                <ul fxLayout='row' fxLayout='20px'>
+                    <!-- <li>Dark
+                        <mat-slide-toggle (change)="onDarkModeSwitched($event)"></mat-slide-toggle>
+                    </li> -->
+                    <li>
+                        <button mat-icon-button routerLinkActive="list-item-active" routerLink="/dashboard">
+                            <mat-icon>
+                                home
+                            </mat-icon>
+                        </button>
+                    </li>
+                    <li>
+                        <button mat-button [matMenuTriggerFor]="menu">
+                            <mat-icon>person_outline</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)='logout()'>
+                                <mat-icon>exit_to_app</mat-icon>
+                                Sign Out
+                            </button>
+                            <!-- <button mat-menu-item>
+                            <mat-icon>exit_to_app</mat-icon>
+                            Forget password
+                        </button> -->
+                        </mat-menu>
+                    </li>
+                </ul>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>

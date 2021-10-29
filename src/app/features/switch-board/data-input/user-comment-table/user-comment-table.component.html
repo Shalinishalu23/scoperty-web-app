@@ -1,0 +1,363 @@
+<div class="app-user-comment-table">
+    <p-table #tt [columns]="userCols" [value]="userComments" selectionMode="multiple" dataKey="sl"
+        [(selection)]="selectedItem" editMode="row">
+        <ng-template pTemplate="caption">
+            <div class="table-header">
+                <div class="tableHeaderText floatLeft">Comments</div>
+                <button pButton type="button" icon="pi pi-plus" class="ui-button-info floatRight addRow" [label]="'Add'"
+                    (click)="addNewRow()"></button>
+                <div class="clear"></div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                </th>
+                <th style="width:9em">Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns" let-editing="editing" let-ri="rowIndex">
+            <tr [pSelectableRow]="rowData" [pEditableRow]="rowData">
+                <td>
+                    {{rowData.date | date:'mediumDate'}}
+                </td>
+                <td>
+                    {{rowData.userName}}
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <textarea pInputText [(ngModel)]="rowData.comments" placeholder="Enter Comments"></textarea>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.comments}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td style="text-align:center">
+                    <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-trash"
+                        class="p-button-rounded" (click)="onDelete(rowData)"></button>
+                    <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil"
+                        class="p-button-rounded" (click)="onRowEditInit(rowData)"></button>
+                    <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check"
+                        class="p-button-rounded" style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+                    <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times"
+                        class="p-button-rounded" (click)="onRowEditCancel(rowData, ri)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <!-- Task table for  componentspecific,failureanalysis & heatexchange -->
+    <p-table #ut [columns]="taskCols" [value]="userTask" selectionMode="multiple" dataKey="sl"
+        [(selection)]="selectedItemTask" editMode="row"
+        *ngIf="tableFrom == 'componentspecific' || tableFrom =='heatexchange' || tableFrom =='failureanalysis' ">
+        <ng-template pTemplate="caption">
+            <div class="table-header">
+                <div class="tableHeaderText floatLeft">Task</div>
+                <button pButton type="button" icon="pi pi-plus" class="ui-button-info floatRight addRow" [label]="'Add'"
+                    (click)="addNewRowTask()"></button>
+                <div class="clear"></div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                </th>
+                <th style="width:9em">Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns" let-editing="editing" let-ri="rowIndex">
+            <tr [pSelectableRow]="rowData" [pEditableRow]="rowData">
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-dropdown [options]="segment" [(ngModel)]="rowData.segment" placeholder="Select Make"
+                                [style]="{'width':'100%'}"></p-dropdown>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.segment}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-calendar appendTo="body" [(ngModel)]="rowData.dateStart" [showIcon]="true"
+                                [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.dateStart | date:'mediumDate'}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-calendar appendTo="body" [(ngModel)]="rowData.dateEnd" [showIcon]="true"
+                                [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.dateEnd | date:'mediumDate'}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn *ngIf="tableFrom == 'failureanalysis'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-calendar appendTo="body" [(ngModel)]="rowData.DeliveredDate" [showIcon]="true"
+                                [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.DeliveredDate | date:'mediumDate'}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn *ngIf="tableFrom == 'failureanalysis'">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <textarea pInputText [(ngModel)]="rowData.Documentation"
+                                placeholder="Enter document"></textarea>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.Documentation}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td style="text-align:center">
+                    <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-trash"
+                        class="p-button-rounded" (click)="onDeleteTask(rowData)"></button>
+                    <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil"
+                        class="p-button-rounded" (click)="onRowEditInitTask(rowData)"></button>
+                    <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check"
+                        class="p-button-rounded" style="margin-right: .5em"
+                        (click)="onRowEditSaveTask(rowData)"></button>
+                    <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times"
+                        class="p-button-rounded" (click)="onRowEditCancelTask(rowData, ri)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-table #dt [columns]="docCols" [value]="userDocs" selectionMode="multiple" dataKey="sl"
+        [(selection)]="selectedItemDoc" editMode="row" *ngIf="tableFrom == 'drawingreview'">
+        <ng-template pTemplate="caption">
+            <div class="table-header">
+                <div class="tableHeaderText floatLeft">Document</div>
+                <button pButton type="button" icon="pi pi-plus" class="ui-button-info floatRight addRow" [label]="'Add'"
+                    (click)="addNewRowDoc()"></button>
+                <div class="clear"></div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                </th>
+                <th style="width:9em">Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns" let-editing="editing" let-ri="rowIndex">
+            <tr [pSelectableRow]="rowData" [pEditableRow]="rowData">
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <textarea pInputText [(ngModel)]="rowData.partNumber"
+                                placeholder="Enter Part Number"></textarea>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.partNumber}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <textarea pInputText [(ngModel)]="rowData.docNote" placeholder="Enter Document Notes"></textarea>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.docNote}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-dropdown [options]="MOCStatus" [(ngModel)]="rowData.MOCStatus"
+                                placeholder="Select Status" [style]="{'width':'100%'}"></p-dropdown>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.MOCStatus}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <textarea pInputText [(ngModel)]="rowData.MOC" placeholder="Enter MOC"></textarea>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.MOC}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-dropdown [options]="reviewedBy" [(ngModel)]="rowData.reviewedBy"
+                                placeholder="Select Reviewd By" [style]="{'width':'100%'}"></p-dropdown>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.reviewedBy}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td style="text-align:center">
+                    <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-trash"
+                        class="p-button-rounded" (click)="onDeleteDoc(rowData)"></button>
+                    <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil"
+                        class="p-button-rounded" (click)="onRowEditInitDoc(rowData)"></button>
+                    <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check"
+                        class="p-button-rounded" style="margin-right: .5em"
+                        (click)="onRowEditSaveDoc(rowData)"></button>
+                    <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times"
+                        class="p-button-rounded" (click)="onRowEditCancelDoc(rowData, ri)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-table #ut [columns]="taskCols" [value]="userTask" selectionMode="multiple" dataKey="sl"
+        [(selection)]="selectedItemTask" editMode="row" *ngIf="tableFrom == 'designreview'">
+        <ng-template pTemplate="caption">
+            <div class="table-header">
+                <div class="tableHeaderText floatLeft">Task</div>
+                <button pButton type="button" icon="pi pi-plus" class="ui-button-info floatRight addRow" [label]="'Add'"
+                    (click)="addNewRowTask()"></button>
+                <div class="clear"></div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                </th>
+                <th style="width:9em">Actions</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-rowData let-columns="columns" let-editing="editing" let-ri="rowIndex">
+            <tr [pSelectableRow]="rowData" [pEditableRow]="rowData">
+
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="rowData.component" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.component}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+                <td>
+
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-dropdown [options]="reviewType" [(ngModel)]="rowData.reviewType"
+                                placeholder="Select Make" [style]="{'width':'100%'}">
+                            </p-dropdown>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.reviewType ? rowData.reviewType.name : ''}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-dropdown [options]="task" [(ngModel)]="rowData.task" placeholder="Select Make"
+                                [style]="{'width':'100%'}"></p-dropdown>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.task ? rowData.task.name : ''}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-dropdown [options]="supportedReview" [(ngModel)]="rowData.supportedReview"
+                                placeholder="Select Make" [style]="{'width':'100%'}"></p-dropdown>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.supportedReview ? rowData.supportedReview.name : ''}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-calendar appendTo="body" [(ngModel)]="rowData.startDate" [showIcon]="true"
+                                [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.startDate | date:'mediumDate'}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-calendar appendTo="body" [(ngModel)]="rowData.dueDate" [showIcon]="true"
+                                [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.dueDate | date:'mediumDate'}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-calendar appendTo="body" [(ngModel)]="rowData.completeDate" [showIcon]="true"
+                                [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.completeDate | date:'mediumDate'}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-calendar appendTo="body" [(ngModel)]="rowData.reviewDate" [showIcon]="true"
+                                [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.reviewDate | date:'mediumDate'}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td style="text-align:center">
+                    <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-trash"
+                        class="p-button-rounded" (click)="onDeleteTask(rowData)"></button>
+                    <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil"
+                        class="p-button-rounded" (click)="onRowEditInitTask(rowData)"></button>
+                    <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check"
+                        class="p-button-rounded" style="margin-right: .5em"
+                        (click)="onRowEditSaveTask(rowData)"></button>
+                    <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times"
+                        class="p-button-rounded" (click)="onRowEditCancelTask(rowData, ri)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+</div>

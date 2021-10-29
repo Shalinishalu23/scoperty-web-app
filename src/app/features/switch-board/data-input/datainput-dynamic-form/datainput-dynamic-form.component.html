@@ -1,0 +1,71 @@
+<div class="app-datainput-dynamic-form">
+    <div class="form-container">
+        <form [formGroup]="createForm">
+            <p-toast class="custom-toast"></p-toast>
+            
+            <mat-card *ngFor="let card of fieldArray">
+                <mat-card-header *ngIf="card[0].cardTitle">
+                    <mat-card-title>{{card[0].cardTitle}}</mat-card-title>
+                </mat-card-header>
+                <mat-list-item *ngFor="let field of card  let i = index" [ngSwitch]="field.type">
+                    <mat-form-field appearance="outline" *ngSwitchCase="'select'">
+                        <mat-label>{{field.label}}</mat-label>
+                        <mat-select matTooltip="{{field.label}}" formControlName="{{field.control}}"
+                            required="{{field.mandatory=== true ? true : false}}" name="{{field.control}}"
+                            id="{{field.control}}">
+                            <!-- <mat-option (click)="createForm.controls.formal.reset()"></mat-option> -->
+                            <mat-option *ngFor="let item of field.options" [value]="item.Id">
+                                {{item.Description}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!-- <span  *ngIf="field.mandatory" style="color: red;">*</span> -->
+                    <mat-form-field appearance="outline" *ngSwitchCase="'text'">
+                        <!-- this mat icon validator or  required -->
+                        <!-- <mat-icon *ngIf="field.mandatory" style="color: red;" matSuffix>*</mat-icon> -->
+                        <mat-label>{{field.label}}</mat-label>
+                        <input matTooltip="{{field.label}}" matInput formControlName="{{field.control}}"
+                            name="{{field.control}}" placeholder="{{field.label}}" maxlength="{{field.maxlen ? field.maxlen : 30}}"
+                            required="{{field.mandatory=== true ? true : false}}">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" *ngSwitchCase="'number'">
+                        <mat-label>{{field.label}}</mat-label>
+                        <input type="number" matTooltip="{{field.label}}" matInput formControlName="{{field.control}}"
+                            placeholder="{{field.label}}" name="{{field.control}}" onKeyPress="if(this.value.length==5) return false;">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" *ngSwitchCase="'textarea'" class="textarea-full-width">
+                        <mat-label>{{field.label}}</mat-label>
+                        <textarea matTooltip="{{field.label}}" matInput formControlName="{{field.control}}"
+                            placeholder="{{field.label}}" name="{{field.control}}"></textarea>
+                    </mat-form-field>
+                    <mat-form-field *ngSwitchCase="'date'">
+                        <input matTooltip="{{field.label}}" matInput formControlName="{{field.control}}"
+                            [matDatepicker]="ii" placeholder="{{field.label}}" name="{{field.control}}">
+                        <mat-datepicker-toggle matSuffix [for]="ii">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #ii></mat-datepicker>
+                    </mat-form-field>
+                    <mat-slide-toggle matTooltip="{{field.label}}" *ngSwitchCase="'slide'" class="textColor"
+                        formControlName="{{field.control}}" name="{{field.control}}">{{field.label}}</mat-slide-toggle>
+                    <mat-checkbox matTooltip="{{field.label}}" *ngSwitchCase="'check'" class="textColor"
+                        formControlName="{{field.control}}" name="{{field.control}}">
+                        {{field.label}}
+                    </mat-checkbox>
+                </mat-list-item>
+            </mat-card>
+            <mat-card>
+                <app-user-comment-table (userCommentTable)="receiveUserComment($event)" 
+                    (userTaskTable)="receiveUserTask($event)" (userDocTable)="receiveUserDoc($event)" [userCommentsList]="userCommentsList"
+                    [userTaskList]="userTaskList"  [userDocList]="userDocList" [tableFrom]='pageName'>
+                </app-user-comment-table>
+            </mat-card>
+            <div align="center" class="saveForm">
+                <button mat-raised-button color="primary" (click)="saveForm()" name="saveForm">Save
+                    Form</button>&nbsp;&nbsp;
+                <button mat-raised-button color="primary" (click)="close()" name="close">Go To Main</button>
+            </div>
+            <app-footer-box [tableFrom]='pageName' *ngIf="pageName != 'supplierrequest' && pageName != 'designreview'">
+            </app-footer-box>
+        </form>
+    </div>
+</div>

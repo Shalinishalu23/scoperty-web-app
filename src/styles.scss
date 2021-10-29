@@ -1,0 +1,271 @@
+@import "~@angular/material/theming";
+@include mat-core();
+// custom color
+$mat-light-theme-background: (
+    // status-bar: map_get($mat-grey, 300),
+    // app-bar:    map_get($mat-grey, 100),
+    // background: map_get($mat-grey, 50),
+    // hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+    // hover: #e4551f,
+    hover: #f76934,
+    // card:      map_get($mat-indigo, 200),
+    // dialog:     white,
+    // disabled-button: rgba(black, 0.12),
+    // raised-button: white,
+    // focused-button: $dark-focused,
+    // selected-button: map_get($mat-grey, 300),
+    // selected-disabled-button: map_get($mat-grey, 400),
+    // disabled-button-toggle: map_get($mat-grey, 200),
+    // unselected-chip: map_get($mat-grey, 300),
+    // disabled-list-option: map_get($mat-grey, 200),
+    // tooltip: map_get($mat-grey, 700),
+);
+$collins-web-app-primary: mat-palette($mat-grey, 900);
+$collins-web-app-accent: mat-palette($mat-deep-orange, A400);
+$collins-web-app-warn: mat-palette($mat-red);
+// direct set  background color
+$custom-background-color: map_get($mat-grey, 50);
+$mat-light-theme-background: map_merge(
+    $mat-light-theme-background,
+    (
+        background: $custom-background-color,
+    )
+);
+$collins-web-app-theme: mat-light-theme($collins-web-app-primary, $collins-web-app-accent, $collins-web-app-warn);
+$collins-web-app-theme-dark: mat-dark-theme($collins-web-app-primary, $collins-web-app-accent, $collins-web-app-warn);
+// @include angular-material-theme($collins-web-app-theme);
+.theme-dark {
+    @include angular-material-theme($collins-web-app-theme-dark);
+}
+
+.theme-light {
+    @include angular-material-theme($collins-web-app-theme);
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+    //check below background color
+    //  background: mat-color(map_get($collins-web-app-theme, accent), 700);
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.floatLeft {
+    float: left;
+}
+
+.floatRight {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+mat-card.header {
+    background: #ccc;
+    margin: 0 0 10px 0;
+    padding-bottom: 0;
+}
+
+.theme-dark .mat-toolbar.mat-primary {
+    // background: #242424;
+    color: white;
+    //#e4551f
+}
+
+.theme-light .mat-card {
+}
+.theme-light .mat-input-element, input.mat-input-element, textarea.mat-input-element{
+    color:#000;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: rgb(0 0 0 / 25%);
+}
+
+//**Primeng Table Style**/
+.mat-header-cell {
+    font-size: 14px;
+}
+
+table {
+    font-size: 14px;
+}
+
+table tr.mat-header-row {
+    height: 45px;
+}
+
+.p-datatable .p-datatable-header {
+    font-weight: 500;
+}
+
+.p-inputtext {
+    width: auto;
+    max-width: 150px;
+}
+.p-button.p-button-icon-only {
+    margin: 0 5px 0 0;
+}
+
+//**Mat table Style**//
+
+/**Table style**/
+
+table {
+    width: 100%;
+    border: 1px solid #d6d6d6;
+    box-shadow: 0px 0px 1px 1px #f7f7f7;
+    margin-bottom: 10px;
+}
+
+/*****Spinner****/
+.spinner {
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    background: none !important;
+    opacity: 0.6;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    border-right: 16px solid rgba(35, 35, 35, 0.87);
+    border-bottom: 16px solid #3498db;
+    border-left: 16px solid rgba(35, 35, 35, 0.87);
+    // border-left: 16px solid pink;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    position: fixed;
+    top: 45%;
+    left: 45%;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*Matcard header styles*/
+
+.form-header mat-card-header {
+    display: inline;
+    float: left;
+}
+
+.form-header mat-card-actions {
+    display: inline;
+    float: right;
+    margin: 0;
+    padding: 0 0 10px 0;
+}
+
+/**Form styles**/
+
+::ng-deep mat-form-field {
+    margin: 0.25em 1em;
+    font-size: 12px;
+}
+
+.asterisk_input::after {
+    content: " *";
+    color: red;
+}
+
+.textarea-full-width {
+    width: 98%;
+}
+
+.mat-form-field-hint-end {
+    padding-top: 5px;
+}
+
+mat-nav-list.saveForm {
+    // width: 120px;
+    margin: 10px auto 0 auto;
+    // padding: 0;
+    // margin-bottom: 0 5px 0 15px;
+    // background: linear-gradient(to right, #5d5d5d, #0a0a0a);
+    // background: #f76934;
+}
+
+.saveForm {
+    margin: 15px 0 10px;
+}
+.saveForm .mat-raised-button {
+    min-width: 120px;
+    background: linear-gradient(to right, #5d5d5d, #0a0a0a);
+}
+
+.form-footer mat-nav-list {
+    display: inline;
+    float: left;
+    margin: 0 5px 0 0;
+    padding: 0;
+    background: linear-gradient(to right, #5d5d5d, #0a0a0a);
+}
+
+/**Primeng table style**/
+
+.p-datatable .p-datatable-thead > tr > th {
+    background: rgb(35 35 35 / 87%);
+    color: #fff;
+    font-weight: 500;
+}
+
+.app-forms {
+    padding: 10px 0 0;
+    mat-form-field {
+        margin: 0.25em 0.8em;
+        font-size: 12px;
+    }
+    .form-container mat-card {
+        margin: 0 10px 5px 0;
+        border: 2px solid #e0e0e0;
+        padding: 10px 5px 0;
+    }
+    .form-container .mat-card-header .mat-card-title {
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+     ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+        padding-bottom: 0.5em !important;
+    }
+    //**Form footer styles**//
+     ::ng-deep .mat-list-item,
+     ::ng-deep .mat-list-item:hover {
+        color: #fff;
+    }
+
+}

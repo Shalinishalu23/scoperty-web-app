@@ -1,0 +1,26 @@
+/* Structure */
+
+.app-labs {
+    .mat-form-field {
+        font-size: 14px;
+    }
+    mat-form-field {
+        margin: 0.25em 1em;
+    }
+    .float-left {
+        width: 47%;
+        float: left;
+    }
+    .float-right {
+        width: 47%;
+        float: right;
+    }
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: rgb(0 0 0 / 25%);
+    }
+    ::ng-deep .mat-tab-label,
+    ::ng-deep .mat-tab-link {
+        background: #ccc;
+    }
+    // ::ng-deep .mat-tab-label,   ::ng-deep .mat-tab-link{background: #000000;color: #fff;}
+}

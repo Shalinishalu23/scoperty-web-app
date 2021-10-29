@@ -1,0 +1,130 @@
+<div class="app-lab-results">
+    <p-table #tt [columns]="cols" [value]="labResults" selectionMode="multiple" dataKey="sl"
+        [(selection)]="selectedItem" editMode="row" [paginator]="true" [rows]="5"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" name="labResultTab"
+        [rowsPerPageOptions]="['5','10','25','50']">
+        <ng-template pTemplate="caption">
+            <div class="table-header">
+                <button pButton type="button" icon="pi pi-plus" class="ui-button-info addRow" [label]="'Add'" name="add"
+                    (click)="addNewRow()"></button>
+                <!-- <span class="p-input-icon-left floatRight">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="tt.filterGlobal($event.target.value, 'contains')"
+                        placeholder="Global Search" />
+                </span> -->
+                <div class="clear"></div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                </th>
+                <th style="width:9em">Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns" let-editing="editing" let-ri="rowIndex">
+            <tr [pSelectableRow]="rowData" [pEditableRow]="rowData">
+                <!-- <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+            </td> -->
+                <!-- <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="rowData.sl" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.sl}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td> -->
+                <td>
+                    {{rowData.date | date:'mediumDate'}}
+                </td>
+               
+                <td>
+                    {{rowData.userName}}
+                </td>
+
+                 <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="rowData.testNumber" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.testNumber}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-dropdown [options]="results" [(ngModel)]="rowData.results" placeholder="Select Make"
+                                [style]="{'width':'100%'}"></p-dropdown>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.results}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="rowData.disposition">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.disposition}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="rowData.partNumber">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.partNumber}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="rowData.processNumber">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.processNumber}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="rowData.specNumber">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.specNumber}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                
+                <td style="text-align:center">
+                    <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-trash"
+                        class="p-button-rounded" (click)="onDelete(rowData)" name="labDelete"></button>
+                    <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil"
+                        class="p-button-rounded" (click)="onRowEditInit(rowData)" name="labEdit"></button>
+                    <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check"
+                        class="p-button-rounded" style="margin-right: .5em" (click)="onRowEditSave(rowData)" name="labSave"></button>
+                    <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times"
+                        class="p-button-rounded" (click)="onRowEditCancel(rowData, ri)" name="labCancel"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

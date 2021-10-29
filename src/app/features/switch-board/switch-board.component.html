@@ -1,0 +1,87 @@
+<div class="spinner" *ngIf="displaySpinner">
+    <div class="loader"></div>
+</div>
+<div class="container" fxLayout="column">
+    <!-- <mat-card class="cardWrap" fxLayout="row" fxFlex="100%" fxLayoutAlign="center center" class="mat-elevation-z8"
+        fxLayout.xs="column">
+        <h4>
+            Materials Engineering Main Switchboard
+        </h4>
+    </mat-card> -->
+    <div class="cardWrap" fxLayout="row" fxLayout.lt-md="row" fxLayout.md="row">
+        <div fxFlex.lt-md="100" fxFlex="100">
+            <mat-card class='header'>
+                <mat-card-header>
+                    <mat-card-title> Materials Engineering Main Switchboard</mat-card-title>
+                </mat-card-header>
+            </mat-card>
+        </div>
+    </div>
+    <div class="cardWrap" fxLayout="row" fxLayout.lt-md="column" fxLayoutAligmnet="space-between center"
+        fxLayoutGap="20px" fxLayout.md="column" fxFlex.md="50" fxLayout.xs="column">
+        <div fxLayout="row" fxFlex="66" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.lt-md="column">
+            <mat-card class="card" fxFlex.lt-md="100" fxFlex="50" class="mat-elevation-z8">
+                <mat-card-header>
+                    <mat-card-title align="center">Data Input</mat-card-title>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <br>
+                <mat-card-content>
+                    <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                        <button mat-raised-button fxFlexAlign="center" fxflex="20%" style="width : 20em;"
+                            *ngFor="let item of dataInput; let i = index" (click)="changeActive(i, item.formName)"
+                            class="card-container">
+                            {{item.name}}</button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="card" fxFlex.lt-md="100" fxFlex="50" class="mat-elevation-z8">
+                <mat-card-header>
+                    <mat-card-title>Reports</mat-card-title>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <br>
+                <mat-card-content>
+                    <div fxLayout="column" fxLayoutAlign="space-evenly center" fxLayoutGap="10px">
+                        <button mat-raised-button fxFlexAlign="center" fxflex="20%" style="width : 20em;"
+                            *ngFor="let item of reports; let i = index" (click)="changeActive(i, item.formName)"
+                            class="card-container">
+                            {{item.name}}</button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div fxLayout="column" fxFlex="32" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.lt-md="column">
+            <mat-card class="card" fxFlex.lt-md="100" fxFlex="50" class="mat-elevation-z8">
+                <mat-card-header>
+                    <mat-card-title>Search</mat-card-title>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <br>
+                <mat-card-content>
+                    <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                        <button mat-raised-button fxFlexAlign="center" fxflex="20%" style="width : 20em;"
+                            *ngFor="let item of search; let i = index" (click)="changeActive(i, item.formName)"
+                            class="card-container">
+                            {{item.name}}</button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="card" fxFlex.lt-md="100" fxFlex="50" class="mat-elevation-z8">
+                <mat-card-header>
+                    <mat-card-title>Tools</mat-card-title>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <br>
+                <mat-card-content>
+                    <div fxLayout="column" fxLayoutAlign="space-evenly center" fxLayoutGap="10px">
+                        <button mat-raised-button fxFlexAlign="center" fxflex="20%" style="width : 20em;"
+                            *ngFor="let item of tools; let i = index" (click)="changeActive(i, item.formName)"
+                            class="card-container">
+                            {{item.name}}</button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

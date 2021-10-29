@@ -1,0 +1,22 @@
+<div class="app-tool-box">
+    <mat-card class="text-box-card">
+        <mat-card-header>
+            <mat-card-title align="center">Tools</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-nav-list *ngFor="let tools of toolBoxArray;">
+            <a mat-list-item routerLinkActive="list-item-active" name= {{tools.formName}}
+                >{{tools.name}}</a>
+                <!-- (click)="getToolBoxForm(tools.formName)" -->
+            <mat-divider></mat-divider>
+        </mat-nav-list>
+        <!-- <pdf-viewer [src]="pdfSrc" [render-text]="true" style="display: block;"></pdf-viewer>  -->
+         <!-- <pdf-viewer [src]="src" [original-size]="false"></pdf-viewer> -->
+        <!-- <pdf-viewer [src]="'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf'" height="80vh"></pdf-viewer> -->
+        <!-- <pdf-viewer [src]="pdfSrc" [(page)]="page" [rotation]="rotation" [original-size]="originalSize"
+            [fit-to-page]="fitToPage" (after-load-complete)="afterLoadComplete($event)" [zoom]="zoom"
+            [show-all]="showAll" [stick-to-page]="stickToPage" [render-text]="renderText"
+            [external-link-target]="'blank'" [autoresize]="autoresize" (error)="onError($event)"
+            (on-progress)="onProgress($event)" (page-rendered)="pageRendered($event)"></pdf-viewer> -->
+    </mat-card>
+</div>

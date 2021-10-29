@@ -1,0 +1,34 @@
+[
+    {
+      "id": 3242,
+      "beingWorkedBy": "John",
+      "RequestedBy": "requested user",
+      "PartName": "Frame",
+      "status": "Complete",
+      "requestedDueDate": "2020-10-21",
+      "Telephone": "860-222-3333",
+      "ChargeNumber": "A01245",
+      "Priority": 1,
+      "DateStarted": "2020-11-16",
+      "RequestedByDate": "2021-06-02",
+      "DateCompleted": "2021-02-16",
+      "Engineer": "xyz",
+      "Quantity": 2
+    },
+    {
+        "id": 3242,
+        "beingWorkedBy": "John",
+        "RequestedBy": "requested user",
+        "PartName": "Frame",
+        "status": "Complete",
+        "requestedDueDate": "2020-10-21",
+        "Telephone": "860-222-3333",
+        "ChargeNumber": "A01245",
+        "Priority": 1,
+        "DateStarted": "2020-11-16",
+        "RequestedByDate": "2021-06-02",
+        "DateCompleted": "2021-02-16",
+        "Engineer": "xyz",
+        "Quantity": 2
+      }
+  ]

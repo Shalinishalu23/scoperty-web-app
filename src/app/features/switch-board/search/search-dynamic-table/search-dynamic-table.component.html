@@ -1,0 +1,55 @@
+<p-toast></p-toast>
+<div class="app-search-dynamic-table">
+    <p-table #tt [columns]="cols" [value]="tableData" [responsive]="true" [paginator]="true" [rows]="5"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="['5','10','25','50']">
+        <ng-template pTemplate="caption">
+            <!-- <div class="p-d-flex">
+                <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()"
+                    class="p-button-success p-mr-2" pTooltip="XLS" tooltipPosition="bottom"></button>
+                <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()"
+                    class="p-button-warning p-mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+            </div> -->
+            <div class="table-header">
+                <span class="title" style="margin-top:8px;">{{title}}</span>
+                <span class="p-input-icon-left floatRight">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="tt.filterGlobal($event.target.value, 'contains')"
+                        placeholder="Global Search" />
+                </span>
+                <div class="clear"></div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-dialog appendTo="body" *ngIf="formDialog" [(visible)]="formDialog" [style]="{width: '80%'}"
+        header="Update Record for Id : {{editRowData.Id}}" [modal]="true" styleClass="p-fluid">
+        <app-add-failure-analysis *ngIf="tableFrom == 'failureAnalysis'" [editForm]="editForm"
+            [editRowData]="editRowData"></app-add-failure-analysis>
+        <app-add-main-expand *ngIf="tableFrom == 'mainExpand'" [editForm]="editForm" [editRowData]="editRowData">
+        </app-add-main-expand>
+        <app-add-drawing-review *ngIf="tableFrom == 'drawingReview'" [editForm]="editForm" [editRowData]="editRowData">
+        </app-add-drawing-review>
+        <app-add-metallic-design *ngIf="tableFrom == 'metallicDesign'" [editForm]="editForm"
+            [editRowData]="editRowData"></app-add-metallic-design>
+        <app-add-supplier-request *ngIf="tableFrom == 'supplierRequest'" [editForm]="editForm"
+            [editRowData]="editRowData"></app-add-supplier-request>
+        <app-add-component-specific *ngIf="tableFrom == 'componentSpecific'" [editForm]="editForm"
+            [editRowData]="editRowData"></app-add-component-specific>
+    </p-dialog>
+</div>

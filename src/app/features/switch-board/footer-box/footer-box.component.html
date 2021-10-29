@@ -1,0 +1,8 @@
+<mat-card class="form-footer" *ngIf="footerBoxArray.length">
+    <mat-nav-list class="footerButtonGrp" *ngFor="let btns of footerBoxArray;">
+        <a mat-list-item routerLinkActive="list-item-active" name= {{btns.formName}}  
+       >{{btns.name}}</a>
+       <!-- (click)="getFooterValue(i,btns.formName)" -->
+    </mat-nav-list>
+    <div class="clear"></div>
+</mat-card>

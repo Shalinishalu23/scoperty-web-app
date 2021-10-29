@@ -1,0 +1,28 @@
+.app-datainput-dynamic-table{
+    padding: 10px 0 0;
+      .p-button{margin:0 5px;}
+      .table-header span.title{margin-top:8px;}
+      .p-button.p-button-icon-only.p-button-rounded{height: 2em;width: 2em;}
+
+  .p-datatable .p-datatable-tbody > tr > td{
+      overflow-wrap: break-word;
+  }
+  .noData{
+    padding: 20px 0;
+    border: 2px solid #edecec;
+    text-align: center;
+    font-weight: 500;
+  }
+  }
+
+// .cdk-overlay-pane {
+//   position: absolute;
+//   pointer-events: auto;
+//   box-sizing: border-box;
+//   z-index: 1000;
+//   display: flex;
+//   max-width: 100%;
+//   max-height: 100%;
+// }
+
+.p-dialog,.p-dialog-mask.p-component-overlay{z-index: 999 !important;}

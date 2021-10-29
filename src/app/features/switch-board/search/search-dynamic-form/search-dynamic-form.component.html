@@ -1,0 +1,40 @@
+<div class="spinner" *ngIf="displaySpinner">
+    <div class="loader"></div>
+</div>
+<div class="app-forms">
+
+    <mat-card class='header form-header'>
+        <mat-card-header>
+            <mat-card-title>{{title}}</mat-card-title>
+        </mat-card-header>
+        <div class="clear"></div>
+    </mat-card>
+
+    <div class="form-container">
+        <form [formGroup]="searchForm">
+            
+            <mat-card class="searchCard">
+                <mat-card-header>
+                    <mat-card-title>Enter Search Criteria</mat-card-title>
+                </mat-card-header>
+               
+                    <mat-form-field appearance="outline" *ngFor="let field of fieldArray" [ngSwitch]="field.type">
+                        <mat-label>{{field.label}}</mat-label>
+                        <mat-select *ngSwitchCase="'select'" matTooltip="Memo Code" formControlName="{{field.control}}" name="{{field.control}}">
+                            <mat-option *ngFor="let item of field.options" [value]="item.Id">
+                                {{item.Description}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+            </mat-card>
+
+            <app-search-dynamic-table [pageName]='pageName' [cols]='cols'></app-search-dynamic-table>
+
+        </form>
+        <div align="center" class="saveForm">
+            <button mat-raised-button color="primary">Search</button>
+        </div> 
+        <div class="clear"></div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+.card {
+    max-width: 400px;
+    max-height: 500px;
+    min-height: 100px;
+}
+.header {
+    text-align: center;
+    font-size: 23px;
+}
+
+.card-container:not(.highlight-card):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+    color: white;
+    background-color: #e4551f;
+}

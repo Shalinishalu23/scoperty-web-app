@@ -1,0 +1,63 @@
+<div class="spinner" *ngIf="displaySpinner">
+    <div class="loader"></div>
+</div>
+<div class="app-forms">
+    <mat-card class='header form-header'>
+        <mat-card-header>
+            <mat-card-title>Reports</mat-card-title>
+        </mat-card-header>
+        <div class="clear"></div>
+    </mat-card>
+    <mat-drawer-container class="form-container">
+        <mat-drawer-content class="mat-elevation-z8">
+            <mat-tab-group>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        {{title}}
+                    </ng-template>
+                    <div class="form-container">
+                        <form [formGroup]="createReportForm">
+                            <p-toast class="custom-toast"></p-toast>
+                            <mat-card class="reportsCard">
+                                <!-- <button mat-raised-button color="primary" *ngFor="let link of navLinks"
+                                    (click)="changeActive(link.formName)"> {{link.label}}</button> -->
+                                <mat-form-field appearance="outline" *ngFor="let field of fieldArray let i = index"
+                                    [ngSwitch]="field.type">
+                                    <mat-label>{{field.label}}</mat-label>
+                                    <mat-select *ngSwitchCase="'select'" matTooltip="Memo Code"
+                                        formControlName="{{field.control}}" name="{{field.control}}">
+                                        <mat-option *ngFor="let item of field.options" [value]="item.Id">
+                                            {{item.Description}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <input *ngSwitchCase="'text'" matTooltip="{{field.control}}" matInput
+                                        formControlName="{{field.control}}" name="{{field.control}}"
+                                        placeholder="{{field.control}}">
+                                    <input *ngSwitchCase="'number'" type="number" matTooltip="{{field.label}}" matInput
+                                        formControlName="{{field.control}}" placeholder="{{field.label}}"
+                                        name="{{field.control}}">
+                                    <textarea *ngSwitchCase="'textarea'" matTooltip="{{field.label}}" matInput
+                                        formControlName="{{field.control}}" placeholder="{{field.control}}"></textarea>
+                                    <input *ngSwitchCase="'date'" matTooltip="{{field.label}}" matInput
+                                        formControlName="{{field.control}}" [matDatepicker]="ii"
+                                        placeholder="{{field.label}}">
+                                    <mat-datepicker-toggle *ngSwitchCase="'date'" matSuffix [for]="ii">
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #ii></mat-datepicker>
+                                </mat-form-field>
+                            </mat-card>
+                            <div align="center" class="saveForm">
+                                <button mat-raised-button color="primary" (click)="searchForm()">Search</button>&nbsp;&nbsp;
+                                <button mat-raised-button color="primary" (click)="close()">Back to
+                                    Switchboards</button>
+                            </div>
+
+                            <app-search-dynamic-table [pageName]='pageName' [cols]='cols'></app-search-dynamic-table>
+                            
+                        </form>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

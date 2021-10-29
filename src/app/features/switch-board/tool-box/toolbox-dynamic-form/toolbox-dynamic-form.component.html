@@ -1,0 +1,87 @@
+
+  <div class="spinner" *ngIf="displaySpinner">
+    <div class="loader"></div>
+</div>
+<div class="app-forms">
+    <mat-card class='header form-header'>
+        <mat-card-header>
+            <mat-card-title>{{title}}</mat-card-title>
+        </mat-card-header>
+        <div class="clear"></div>
+    </mat-card>
+    <mat-drawer-container class="form-container">
+        <mat-drawer #drawer mode="side" [opened]="tabIndex == 0" position="end">
+            <app-tool-box [formName]="pageName" *ngIf="pageName == 'memos'||pageName ==  'turnbacks'"></app-tool-box>
+        </mat-drawer>
+        <mat-drawer-content class="mat-elevation-z8">
+            <mat-tab-group (selectedTabChange)="tabChanged($event)">
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        Add Forms
+                    </ng-template>
+                    <div class="form-container">
+                        <form [formGroup]="createForm">
+                            <p-toast class="custom-toast"></p-toast>
+                            <mat-card>
+                                <mat-form-field appearance="outline" *ngFor="let field of fieldArray let i = index"
+                                    [ngSwitch]="field.type">
+                                    <mat-label>{{field.label}}</mat-label>
+                                    <mat-select *ngSwitchCase="'select'" matTooltip="Memo Code"
+                                        formControlName="{{field.control}}" name="{{field.control}}">
+                                        <mat-option *ngFor="let item of field.options" [value]="item.Id">
+                                            {{item.Description}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <input *ngSwitchCase="'text'" matTooltip="{{field.control}}" matInput
+                                        formControlName="{{field.control}}" name="{{field.control}}"
+                                        placeholder="{{field.control}}">
+                                    <input *ngSwitchCase="'number'" type="number" matTooltip="{{field.label}}" matInput
+                                        formControlName="{{field.control}}" placeholder="{{field.label}}"
+                                        name="{{field.control}}">
+                                    <textarea *ngSwitchCase="'textarea'" matTooltip="{{field.label}}" matInput  name="{{field.control}}"
+                                        formControlName="{{field.control}}" placeholder="{{field.control}}"></textarea>
+                                    <input *ngSwitchCase="'date'" matTooltip="{{field.label}}" matInput
+                                        formControlName="{{field.control}}" [matDatepicker]="ii"  name="{{field.control}}"
+                                        placeholder="{{field.label}}">
+                                    <mat-datepicker-toggle *ngSwitchCase="'date'" matSuffix [for]="ii">
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #ii></mat-datepicker>
+                                    <!-- <ul>
+                                        <li *ngFor="let subskill of from">
+                                            <mat-checkbox>
+                                                {{subskill.name}}
+                                            </mat-checkbox>
+                                        </li>
+                                    </ul> -->
+                                    <!-- <div *ngFor="let unit of from">
+                                        <mat-checkbox id="unit.id" name="unit.name" formControlName="{{field.control}}">
+                                            {{ unit.name }}
+                                        </mat-checkbox>
+                                    </div> -->
+                                </mat-form-field>
+                            </mat-card>
+                            <mat-card *ngIf="pageName == 'drawingreview'">
+                                <app-user-comment-table (userCommentTable)="receiveUserComment($event)">
+                                </app-user-comment-table>
+                            </mat-card>
+                            <div align="center" class="saveForm">
+                                <button mat-raised-button color="primary" (click)="saveForm()" name="saveToolBox">Save Form</button>
+                                <button mat-raised-button color="primary" (click)="close()" name="closeToolBox">Close</button>
+                            </div>
+                            <!-- <app-footer-box [tableFrom]='pageName'></app-footer-box> -->
+                        </form>
+                    </div>
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        View Data
+                    </ng-template>
+                    <mat-card>
+                        <app-datainput-dynamic-table [title]='title' [tableData]='records' [tableFrom]='pageName'
+                            [cols]='cols'></app-datainput-dynamic-table>
+                    </mat-card>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

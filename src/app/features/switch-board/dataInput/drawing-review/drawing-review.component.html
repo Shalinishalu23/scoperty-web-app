@@ -1,0 +1,49 @@
+<div class="app-drawing-review">
+    <mat-card class='header form-header'>
+        <mat-card-header>
+            <mat-card-title>{{title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-actions align="end">
+            <button class="toolbox-show-btn" mat-flat-button color="primary" (click)="drawer.toggle()">
+                <span class="material-icons" align="end">
+                    vertical_split
+                </span>
+                Tool Box
+            </button>
+        </mat-card-actions>
+        <div class="clear"></div>
+    </mat-card>
+
+    <mat-drawer-container class="form-container">
+        <mat-drawer #drawer mode="side" [opened]="tabIndex == 0" position="end">
+            <app-tool-box [formName]="formName"></app-tool-box>
+        </mat-drawer>
+        <mat-drawer-content class="mat-elevation-z8">
+
+            <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        Add Drawing Review
+                    </ng-template>
+                    <app-add-drawing-review></app-add-drawing-review>
+                </mat-tab>
+            
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        View Drawing Review
+                    </ng-template>
+                    <app-datainput-dynamic-table [title]='title' [tableData]='records' [tableFrom]='formName' [cols]='cols'></app-datainput-dynamic-table>
+                </mat-tab>
+            </mat-tab-group>
+
+        </mat-drawer-content>
+    </mat-drawer-container>
+
+    <mat-card class="form-footer">
+        <mat-nav-list class="footerButtonGrp" *ngFor="let btns of footerButtonsArray;">
+            <a mat-list-item routerLinkActive="list-item-active" (click)="getFooterValue(i,btns.formName)">{{btns.name}}</a>
+        </mat-nav-list>
+
+        <div class="clear"></div>
+    </mat-card>
+</div>

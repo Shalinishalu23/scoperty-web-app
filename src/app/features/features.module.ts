@@ -6,6 +6,7 @@ import { MaterialModulesModule } from 'src/app/shared/material-module';
 import { SharedModule } from '../shared/shared.module';
 import { FeaturesRoutingModule } from './features-routing.module';
 import { FeaturesComponent } from './features.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 /**
  *
@@ -14,7 +15,7 @@ import { FeaturesComponent } from './features.component';
  * @class FeaturesModule
  */
 @NgModule({
-  declarations: [FeaturesComponent],
+  declarations: [FeaturesComponent, ContactsComponent],
   imports: [
     CommonModule,
     FeaturesRoutingModule,

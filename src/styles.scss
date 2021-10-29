@@ -20,7 +20,7 @@ $mat-light-theme-background: (
     // disabled-list-option: map_get($mat-grey, 200),
     // tooltip: map_get($mat-grey, 700),
 );
-$collins-web-app-primary: mat-palette($mat-light-green, 900);
+$collins-web-app-primary: mat-palette($mat-grey, 900);
 $collins-web-app-accent: mat-palette($mat-deep-orange, A400);
 $collins-web-app-warn: mat-palette($mat-red);
 // direct set  background color

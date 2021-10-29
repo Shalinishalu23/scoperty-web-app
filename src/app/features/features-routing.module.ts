@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ContactsComponent } from './contacts/contacts.component';
 import { FeaturesComponent } from './features.component';
 
 const routes: Routes = [
@@ -10,22 +11,28 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'switchboard',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: 'dashboard',
-        loadChildren: () => import('../features/dashboard/dashboard.module').then(m => m.DashboardModule)
+        loadChildren: () =>
+          import('../features/dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
+          ),
       },
       {
         path: 'switchboard',
-        loadChildren: () => import('../features/switch-board/switch-board.module').then(m => m.SwitchBoardModule)
+        loadChildren: () =>
+          import('../features/switch-board/switch-board.module').then(
+            (m) => m.SwitchBoardModule
+          ),
       },
       {
-        path: 'labs',
-        loadChildren: () => import('../features/labs/labs.module').then(m => m.LabsModule)
-      }
-    ]
-  }
+        path: 'contacts',
+        component: ContactsComponent,
+      },
+    ],
+  },
 ];
 
 /**
@@ -36,6 +43,6 @@ const routes: Routes = [
  */
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class FeaturesRoutingModule { }
+export class FeaturesRoutingModule {}

@@ -11,6 +11,10 @@ const routes: Routes = [
     path: '',
     component: SwitchBoardComponent,
   },
+  {
+    path: 'pie',
+    component: DataInputComponent,
+  },
 ];
 
 /**

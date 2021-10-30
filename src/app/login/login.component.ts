@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
    * @memberof LoginComponent
    */
   signIn(f: NgForm) {
-    console.log('f', f)
     // console.log('this.formGroup.value', f.value);
     // this.displaySpinner = true;
     // this.utilityService.addRequest(f.value, 'login').subscribe(
@@ -59,12 +58,7 @@ export class LoginComponent implements OnInit {
     //   }
     // );
 
-    console.log('f.value.EmployeeId', f.value.EmployeeId)
-    console.log('f.value.password', f.value.password)
     if (f.value.EmployeeId === 'admin' && f.value.password === 'admin') {
-
-      console.log('f.value', f.value)
-
       sessionStorage.setItem('userName', f.value.username);
       this.router.navigate(['/home']);
     }

@@ -8,7 +8,6 @@ import { DatePipe } from '@angular/common';
 import { mainExpandModel } from 'src/app/shared/models/datainput-model';
 import { HttpClient } from '@angular/common/http';
 
-
 /**
  *
  *
@@ -75,7 +74,7 @@ export class DataInputComponent implements OnInit {
 
   ngOnInit(): void {
     this.pageName = this.router.url.split('/').pop();
-    // this.getRecords();
+    this.getRecords1();
   }
 
   /**
@@ -86,9 +85,9 @@ export class DataInputComponent implements OnInit {
    */
   tabChanged(tabChangeEvent: MatTabChangeEvent): void {
     this.tabIndex = tabChangeEvent.index;
-    if (this.tabIndex) {
-      this.getRecords();
-    }
+    // if (this.tabIndex) {
+    //   this.getRecords();
+    // }
   }
 
   /**
@@ -117,17 +116,17 @@ export class DataInputComponent implements OnInit {
     this.title = title;
   }
 
-  receiveRecords(tableData){
+  receiveRecords(tableData) {
     this.records = tableData;
   }
-  receiveCols(tableCols){
+  receiveCols(tableCols) {
     this.cols = tableCols;
   }
 
   getRecords1() {
-    this.http.get('assets/json/data.json').subscribe(data =>{
+    this.http.get('assets/json/data.json').subscribe((data) => {
       this.records = data;
-    })
+    });
     this.cols = [
       { field: 'id', header: 'ID' },
       { field: 'beingWorkedBy', header: 'Being Worked By' },

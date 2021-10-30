@@ -3,17 +3,17 @@
 </div>
 <p-toast></p-toast>
 <div class="app-datainput-dynamic-table">
-    <p-table #tt [columns]="cols" sortField="Id" [sortOrder]="-1"  [value]="tableData" selectionMode="multiple" [(selection)]="selectedItem"
-        [responsive]="true" [paginator]="true" [rows]="5"
+    <p-table #tt [columns]="cols" sortField="Id" [sortOrder]="-1" [value]="tableData" selectionMode="multiple"
+        [(selection)]="selectedItem" [responsive]="true" [paginator]="true" [rows]="5"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [rowsPerPageOptions]="['5','10','25','50']" name="viewTable">
         <ng-template pTemplate="caption">
-            <!-- <div class="p-d-flex">
+            <div class="p-d-flex">
                 <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()"
                     class="p-button-success p-mr-2" pTooltip="XLS" tooltipPosition="bottom"></button>
                 <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()"
                     class="p-button-warning p-mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
-            </div> -->
+            </div>
             <div class="table-header">
                 <!-- <span class="title" style="margin-top:8px;">{{title}}</span> -->
                 <span class="p-input-icon-left floatRight">
@@ -47,7 +47,7 @@
                     ||(col.field === 'RequestorCompleteDate')
                     ? (rowData[col.field]| date:
                     'mediumDate') : rowData[col.field] }}
-                </td>                
+                </td>
                 <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
                         (click)="editRecord(rowData)" name="edit"></button>

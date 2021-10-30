@@ -27,14 +27,30 @@
                     <ng-template mat-tab-label>
                         Add Forms
                     </ng-template>
-                   <app-datainput-dynamic-form (tableData)="receiveRecords($event)" (tableCols)="receiveCols($event)" (formTitle)="formTitle($event)"></app-datainput-dynamic-form>
+                    <mat-card class="example-card">
+                        <mat-card-content>
+                            <div class="icon-cards">
+                                <div class="icon-cards-content">
+                                    <div class="icon-cards-item"></div>
+                                    <div class="icon-cards-item"></div>
+                                    <div class="icon-cards-item"></div>
+                                    <div class="icon-cards-item"></div>
+                                    <div class="icon-cards-item"></div>
+                                </div>
+                            </div>
+                            <div id="pipe" style="height: 400px;width: 800px;"></div>
+                            <div id="pipe2" style="height: 400px; width: 800px;"></div>
+
+                        </mat-card-content>
+                    </mat-card>
+                    <!-- <app-datainput-dynamic-form (tableData)="receiveRecords($event)" (tableCols)="receiveCols($event)" (formTitle)="formTitle($event)"></app-datainput-dynamic-form> -->
                 </mat-tab>
                 <mat-tab *ngIf="!editForm">
                     <ng-template mat-tab-label>
                         View Data
                     </ng-template>
-                        <app-datainput-dynamic-table [title]='title' [tableData]='records' [tableFrom]='pageName'
-                            [cols]='cols'></app-datainput-dynamic-table>
+                    <app-datainput-dynamic-table [title]='title' [tableData]='records' [tableFrom]='pageName'
+                        [cols]='cols'></app-datainput-dynamic-table>
                 </mat-tab>
             </mat-tab-group>
         </mat-drawer-content>

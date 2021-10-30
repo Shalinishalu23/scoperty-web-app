@@ -48,14 +48,11 @@ export class SwitchBoardComponent implements OnInit {
     { name: '388 Counties', formName: 'failureanalysis' },
   ];
   reports = [
-    { name: 'Compare your neighborhood estimates', formName: 'pst' },
+    { name: 'Compare your neighborhood estimates', formName: 'pie' },
     { name: 'Find your pre-sale offers & Discover now ', formName: 'myjobs' },
     { name: 'Sell ​​right with Scoperty by your side', formName: 'alljobs' },
-
   ];
-  search = [
-    { name: 'Near by', formName: 'searchDrawingReview' },
-  ];
+  search = [{ name: 'Near by', formName: 'searchDrawingReview' }];
   tools = [{ name: 'Services', formName: 'specification' }];
   lastClickedIndex;
 
@@ -77,7 +74,6 @@ export class SwitchBoardComponent implements OnInit {
    * @memberof SwitchBoardComponent
    */
   loadDropdownData() {
-
     if (!this.globalVariableService.getPriorityDD())
       this.getDropdownData('getPriority');
     if (!this.globalVariableService.getInputFromDD())

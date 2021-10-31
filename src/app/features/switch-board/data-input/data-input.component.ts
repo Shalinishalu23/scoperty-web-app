@@ -54,6 +54,8 @@ export class DataInputComponent implements OnInit {
   tabTextAdd: string = 'Add Forms';
   tabTextEdit: string = 'Edit Forms';
 
+  fileContent: any;
+
   /**
    * Creates an instance of DataInputComponent.
    * @param {Router} router
@@ -74,6 +76,7 @@ export class DataInputComponent implements OnInit {
 
   ngOnInit(): void {
     this.pageName = this.router.url.split('/').pop();
+    console.log('this.pageName', this.pageName);
     this.getRecords1();
   }
 
@@ -135,4 +138,47 @@ export class DataInputComponent implements OnInit {
       { field: 'requestedDueDate', header: 'Due Date' },
     ];
   }
+
+  onChange(fileList: FileList): void {
+    let file = fileList[0];
+    let fileReader: FileReader = new FileReader();
+    let self = this;
+    fileReader.onloadend = function (x) {
+      self.fileContent = fileReader.result;
+      console.log('self.fileContent', self.fileContent);
+    };
+   // this.replace0with5(self.fileContent);
+    fileReader.readAsText(file);
+  }
+
+  // calculateAddedValue(number) {
+  //   console.log('1111', number)
+  //   number = 4001564;
+  //   console.log('2222', number);
+  //   // Amount to be added
+  //   let result = 0;
+  //   // Unit decimal place
+  //   let decimalPlace = 1;
+  //   if (number == 0) {
+  //     result += 5 * decimalPlace;
+  //   }
+  //   while (number > 0) {
+  //     if (number % 10 == 0) {
+  //       // A number divisible by 10, then
+  //       // this is a zero occurrence in
+  //       // the input
+  //       result += 5 * decimalPlace;
+  //     }
+  //     // Move one decimal place
+  //     number = Math.floor(number / 10);
+  //     decimalPlace *= 10;
+  //   }
+  //   console.log('result', result);
+  //   return result;
+  // }
+
+  // replace0with5(number) {
+  //   console.log('replace0with5', number)
+  //   return (number += this.calculateAddedValue(number));
+  // }
 }

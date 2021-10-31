@@ -68,17 +68,15 @@
 
                             <input #file type="file" [hidden]="true" accept=".txt"
                                 (change)="onChange($event.target.files)">
-                            <button mat-raised-button color="primary" #upload (click)="file.click()">Upload string
+                            <button mat-raised-button color="primary" #upload (click)="file.click()">Upload text
                                 file</button>
-                            <br>
-                            <br>
                             <div>
                                 <h3>File Content</h3>
-                                <pre> {{fileContent}} </pre>
+                                <!-- <pre> {{fileContent}} </pre> -->
+                                <input type="text" class="form-control" id="txtProjName1" [(ngModel)]="fileContent" >
+
                             </div>
                         </mat-card-content>
-                        <br>
-
                     </mat-card>
                     <!-- <app-datainput-dynamic-form (tableData)="receiveRecords($event)" (tableCols)="receiveCols($event)" (formTitle)="formTitle($event)"></app-datainput-dynamic-form> -->
                 </mat-tab>
@@ -99,19 +97,14 @@
 
                             <input #file type="file" [hidden]="true" accept=".csv"
                                 (change)="onChange($event.target.files)">
-                            <button mat-raised-button color="primary" (click)="file.click()">Upload csv
+                            <button mat-raised-button color="primary"   (click)="file.click()">Upload csv
                                 file</button>
-                            <br>
-                            <br>
-
                             <div>
                                 <h3>File Content</h3>
-                                <input type="text" class="form-control" id="txtProjName" [(ngModel)]="fileContent">
+                                <input type="text" class="form-control" id="txtProjName" [(ngModel)]="fileContent" >
                                 <!-- <pre> {{fileContent}} </pre> -->
                             </div>
                         </mat-card-content>
-                        <br>
-
                     </mat-card>
                     <!-- <app-datainput-dynamic-form (tableData)="receiveRecords($event)" (tableCols)="receiveCols($event)" (formTitle)="formTitle($event)"></app-datainput-dynamic-form> -->
                 </mat-tab>

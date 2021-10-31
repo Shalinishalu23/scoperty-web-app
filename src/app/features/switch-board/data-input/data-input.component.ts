@@ -147,7 +147,7 @@ export class DataInputComponent implements OnInit {
       self.fileContent = fileReader.result;
       console.log('self.fileContent', self.fileContent);
     };
-   // this.replace0with5(self.fileContent);
+    // this.replace0with5(self.fileContent);
     fileReader.readAsText(file);
   }
 

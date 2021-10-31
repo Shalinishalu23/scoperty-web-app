@@ -40,7 +40,6 @@
                             </div>
                             <div id="pipe" style="height: 400px;width: 800px;"></div>
                             <div id="pipe2" style="height: 400px; width: 800px;"></div>
-
                         </mat-card-content>
                     </mat-card>
                     <!-- <app-datainput-dynamic-form (tableData)="receiveRecords($event)" (tableCols)="receiveCols($event)" (formTitle)="formTitle($event)"></app-datainput-dynamic-form> -->
@@ -65,7 +64,6 @@
                             <!-- <input type="file" (change)="onChange($event.target.files)">
                             <button mat-raised-button color="primary" type="button"
                                 (change)="onChange($event.target.files)">Primary</button> -->
-
                             <input #file type="file" [hidden]="true" accept=".txt"
                                 (change)="onChange($event.target.files)">
                             <button mat-raised-button color="primary" #upload (click)="file.click()">Upload text
@@ -73,14 +71,12 @@
                             <div>
                                 <h3>File Content</h3>
                                 <!-- <pre> {{fileContent}} </pre> -->
-                                <input type="text" class="form-control" id="txtProjName1" [(ngModel)]="fileContent" >
-
+                                <input type="text" class="form-control" id="txtProjName1" [(ngModel)]="fileContent">
                             </div>
                         </mat-card-content>
                     </mat-card>
                     <!-- <app-datainput-dynamic-form (tableData)="receiveRecords($event)" (tableCols)="receiveCols($event)" (formTitle)="formTitle($event)"></app-datainput-dynamic-form> -->
                 </mat-tab>
-
             </mat-tab-group>
         </mat-drawer-content>
         <mat-drawer-content class="mat-elevation-z8" *ngIf="pageName=='js'">
@@ -94,21 +90,19 @@
                             <!-- <input type="file" (change)="onChange($event.target.files)">
                             <button mat-raised-button color="primary" type="button"
                                 (change)="onChange($event.target.files)">Primary</button> -->
-
                             <input #file type="file" [hidden]="true" accept=".csv"
                                 (change)="onChange($event.target.files)">
-                            <button mat-raised-button color="primary"   (click)="file.click()">Upload csv
+                            <button mat-raised-button color="primary" (click)="file.click()">Upload csv
                                 file</button>
                             <div>
                                 <h3>File Content</h3>
-                                <input type="text" class="form-control" id="txtProjName" [(ngModel)]="fileContent" >
+                                <input type="text" class="form-control" id="txtProjName" [(ngModel)]="fileContent">
                                 <!-- <pre> {{fileContent}} </pre> -->
                             </div>
                         </mat-card-content>
                     </mat-card>
                     <!-- <app-datainput-dynamic-form (tableData)="receiveRecords($event)" (tableCols)="receiveCols($event)" (formTitle)="formTitle($event)"></app-datainput-dynamic-form> -->
                 </mat-tab>
-
             </mat-tab-group>
         </mat-drawer-content>
     </mat-drawer-container>

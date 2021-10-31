@@ -4,7 +4,7 @@
 <div class="app-forms">
     <mat-card *ngIf="!editForm" class='header form-header'>
         <mat-card-header>
-            <mat-card-title>{{title}}</mat-card-title>
+            <mat-card-title>{{pageName}}</mat-card-title>
         </mat-card-header>
         <mat-card-actions align="end">
             <button class="toolbox-show-btn" mat-flat-button color="primary" (click)="drawer.toggle()">
@@ -21,7 +21,7 @@
             <!-- *ngIf="formID" add this condition to make side tool bar enable after saving form -->
             <app-tool-box *ngIf="!editForm" [formName]="pageName"></app-tool-box>
         </mat-drawer>
-        <mat-drawer-content class="mat-elevation-z8">
+        <mat-drawer-content class="mat-elevation-z8" *ngIf="pageName=='pie'">
             <mat-tab-group (selectedTabChange)="tabChanged($event)">
                 <mat-tab>
                     <ng-template mat-tab-label>
@@ -52,6 +52,70 @@
                     <app-datainput-dynamic-table [title]='title' [tableData]='records' [tableFrom]='pageName'
                         [cols]='cols'></app-datainput-dynamic-table>
                 </mat-tab>
+            </mat-tab-group>
+        </mat-drawer-content>
+        <mat-drawer-content class="mat-elevation-z8" *ngIf="pageName=='angular'">
+            <mat-tab-group (selectedTabChange)="tabChanged($event)">
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        Add Forms
+                    </ng-template>
+                    <mat-card class="example-card">
+                        <mat-card-content>
+                            <!-- <input type="file" (change)="onChange($event.target.files)">
+                            <button mat-raised-button color="primary" type="button"
+                                (change)="onChange($event.target.files)">Primary</button> -->
+
+                            <input #file type="file" [hidden]="true" accept=".txt"
+                                (change)="onChange($event.target.files)">
+                            <button mat-raised-button color="primary" #upload (click)="file.click()">Upload string
+                                file</button>
+                            <br>
+                            <br>
+                            <div>
+                                <h3>File Content</h3>
+                                <pre> {{fileContent}} </pre>
+                            </div>
+                        </mat-card-content>
+                        <br>
+
+                    </mat-card>
+                    <!-- <app-datainput-dynamic-form (tableData)="receiveRecords($event)" (tableCols)="receiveCols($event)" (formTitle)="formTitle($event)"></app-datainput-dynamic-form> -->
+                </mat-tab>
+
+            </mat-tab-group>
+        </mat-drawer-content>
+        <mat-drawer-content class="mat-elevation-z8" *ngIf="pageName=='js'">
+            <mat-tab-group (selectedTabChange)="tabChanged($event)">
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        Add Forms
+                    </ng-template>
+                    <mat-card class="example-card">
+                        <mat-card-content>
+                            <!-- <input type="file" (change)="onChange($event.target.files)">
+                            <button mat-raised-button color="primary" type="button"
+                                (change)="onChange($event.target.files)">Primary</button> -->
+
+                            <input #file type="file" [hidden]="true" accept=".csv"
+                                (change)="onChange($event.target.files)">
+                            <button mat-raised-button color="primary" (click)="file.click()">Upload csv
+                                file</button>
+                            <br>
+                            <br>
+
+                            <div>
+                                <h3>File Content</h3>
+                                <input type="text" class="form-control" id="txtProjName" [(ngModel)]="fileContent">
+                                <!-- <pre> {{fileContent}} </pre> -->
+                            </div>
+                        </mat-card-content>
+                        <br>
+
+                    </mat-card>
+                    <!-- <app-datainput-dynamic-form (tableData)="receiveRecords($event)" (tableCols)="receiveCols($event)" (formTitle)="formTitle($event)"></app-datainput-dynamic-form> -->
+                </mat-tab>
+
             </mat-tab-group>
         </mat-drawer-content>
     </mat-drawer-container>

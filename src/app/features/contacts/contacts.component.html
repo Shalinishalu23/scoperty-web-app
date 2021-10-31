@@ -1,131 +1,152 @@
-<mat-card class="example-card">
-    <mat-card-header>
-        <mat-card-title>WORLD</mat-card-title>
-        <mat-card-subtitle>
-            your Property Valuation | Starts with Scoperty
-        </mat-card-subtitle>
-    </mat-card-header>
-
-    <mat-card-content>
-        <p>
-            "This platform values ​​the value of your home"
-        </p>
-    </mat-card-content>
-
-    <mat-card-actions>
-        <button mat-button style="background-color:blue; color:white">
-            LIKE
-        </button>
-
-        <button mat-button style="background-color:green; color:white">
-            SHARE
-        </button>
-    </mat-card-actions>
-</mat-card>
-<mat-card class="example-card">
-    <mat-card-header>
-        <mat-card-title>Frankfurter Allgemeine</mat-card-title>
-        <mat-card-subtitle>
-            your Property Valuation | Starts with Scoperty
-        </mat-card-subtitle>
-    </mat-card-header>
-
-    <mat-card-content>
-        <p>
-            Bidding for a villa in the neighborhood
-        </p>
-    </mat-card-content>
-
-    <mat-card-actions>
-        <button mat-button style="background-color:blue; color:white">
-            LIKE
-        </button>
-
-        <button mat-button style="background-color:green; color:white">
-            SHARE
-        </button>
-    </mat-card-actions>
-</mat-card>
-
-
-<mat-card class="example-card">
-    <mat-card-header>
-        <mat-card-title>Southgerman newspaper</mat-card-title>
-        <mat-card-subtitle>
-
-            your Property Valuation | Starts with Scoperty
-
-        </mat-card-subtitle>
-    </mat-card-header>
-
-    <mat-card-content>
-        <p>
-            Real estate costs more and more. But there are clear differences
-        </p>
-    </mat-card-content>
-
-    <mat-card-actions>
-        <button mat-button style="background-color:blue; color:white">
-            LIKE
-        </button>
-
-        <button mat-button style="background-color:green; color:white">
-            SHARE
-        </button>
-    </mat-card-actions>
-</mat-card>
-
-<mat-card class="example-card">
-    <mat-card-header>
-        <mat-card-title>Real Estate Newspaper</mat-card-title>
-        <mat-card-subtitle>
-            your Property Valuation | Starts with Scoperty
-
-        </mat-card-subtitle>
-    </mat-card-header>
-
-    <mat-card-content>
-        <p>
-            Scoperty now active nationwide
-        </p>
-    </mat-card-content>
-
-    <mat-card-actions>
-        <button mat-button style="background-color:blue; color:white">
-            LIKE
-        </button>
-
-        <button mat-button style="background-color:green; color:white">
-            SHARE
-        </button>
-    </mat-card-actions>
-</mat-card>
-<mat-card class="example-card">
-    <mat-card-header>
-        <mat-card-title>Evening newspaper Munich</mat-card-title>
-        <mat-card-subtitle>
-            your Property Valuation | Starts with Scoperty
-
-        </mat-card-subtitle>
-    </mat-card-header>
-
-    <mat-card-content>
-        <p>
-            Here Munich residents can see what their home is worth
-        </p>
-    </mat-card-content>
-
-    <mat-card-actions>
-        <button mat-button style="background-color:blue; color:white">
-            LIKE
-        </button>
-
-        <button mat-button style="background-color:green; color:white">
-            SHARE
-        </button>
-    </mat-card-actions>
-</mat-card>
-<div style="background-color: #3dc988" class="fixed">
+<div class="grid-container" *ngIf="pageName=='reviews'">
+    <mat-grid-list cols="2" rowHeight="200px">
+        <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+            <mat-card class="dashboard-card">
+                <mat-card-header>
+                    <mat-card-title>
+                       <span style="color: #3dc988;">
+                        {{card.title}}
+                       </span>
+                        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu" xPosition="before">
+                            <button mat-menu-item>Expand</button>
+                            <button mat-menu-item>Remove</button>
+                        </mat-menu>
+                    </mat-card-title>
+                    <mat-card-subtitle style="color: #6ac49a;">
+                        {{card.sub}}
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="dashboard-card-content">
+                    <div style="color: #077a45;">
+                        {{card.content}}
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button style="background-color:blue; color:white">
+                        LIKE
+                    </button>
+                    <button mat-button style="background-color:green; color:white">
+                        SHARE
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+<div class="grid-container" *ngIf="pageName=='reviews'">
+    <mat-grid-list cols="2" rowHeight="500px">
+        <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+            <mat-card class="dashboard-card">
+                <mat-card-header>
+                    <mat-card-title style="color: #3dc988;">
+                        {{card.tit}}
+                        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                        </button>
+                        <mat-menu #menu="matMenu" xPosition="before">
+                            <button mat-menu-item>Expand</button>
+                            <button mat-menu-item>Remove</button>
+                        </mat-menu>
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        {{card.subtit}}
+                    </mat-card-subtitle>
+                    <mat-icon>star</mat-icon>
+                </mat-card-header>
+                <img mat-card-image src="{{card.img}}" alt="Photo of a Shiba Inu">
+                <mat-card-content class="dashboard-card-content">
+                    <p>
+                        {{card.con}}
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+<div class="cardWrap" fxLayout="row" fxLayout.lt-md="column" fxLayoutAligmnet="space-between center" fxLayoutGap="20px"
+    fxLayout.md="column" fxFlex.md="50" fxLayout.xs="column" *ngIf="pageName=='contacts'">
+    <div fxLayout="column" fxFlex="50" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.lt-md="column">
+        <mat-card class="card" fxFlex.lt-md="100" fxFlex="50" class="mat-elevation-z8">
+            <mat-card-header>
+                <mat-card-title><span> <img alt="Collins Logo" src="/assets/img/scoperty.jpg" style="width: 200px; height: 25px;
+                    object-fit: scale-down;" /></span></mat-card-title>
+                <mat-card-subtitle style="color: black;">The pre-market for real estate</mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <br>
+            <mat-card-content>
+                <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                    <img alt="Collins Logo" src=" https://scoperty.de/assets/images/home-page/intargia-badge.png" style="width: 180px; ;
+                    object-fit: scale-down;" />
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="card" fxFlex.lt-md="100" fxFlex="50" class="mat-elevation-z8">
+            <mat-card-header>
+                <mat-card-title>Contact</mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <br>
+            <mat-card-content>
+                <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                    <mat-icon> email</mat-icon>
+                    kontakt@scoperty.de
+                    <mat-icon> call</mat-icon>
+                    +49 (0) 89 2000 297 50
+                    <mat-icon>not_interested</mat-icon>
+                    Contradiction
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxLayout="column" fxFlex="52" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.lt-md="column">
+        <mat-card class="card" fxFlex.lt-md="100" fxFlex="50" class="mat-elevation-z8">
+            <mat-card-header>
+                <mat-card-title>Companies</mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <br>
+            <mat-card-content>
+                <div fxLayout="column" fxLayoutAlign="space-evenly center" fxLayoutGap="10px">
+                    <p><b><a href="https://scoperty.de/pages/about" target="_blank">about us</a></b></p>
+                    <p><b> <a href="https://scoperty.de/" target="blank">
+                                For brokers
+                            </a></b></p>
+                    <p><b> <a href="https://scoperty.de/blog" target="blank">
+                                Blog
+                            </a></b></p>
+                    <p><b> <a href="https://scoperty.jobs.personio.de/" target="blank">
+                                Career
+                            </a></b></p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="card" fxFlex.lt-md="100" fxFlex="50" class="mat-elevation-z8">
+            <mat-card-header>
+                <mat-card-title>Services</mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <br>
+            <mat-card-content>
+                <div fxLayout="column" fxLayoutAlign="space-evenly center" fxLayoutGap="10px">
+                    <p><b><a href="https://scoperty.de/pages/verkaufsberatung" target="_blank">advisory</a></b></p>
+                    <p><b> <a href="https://scoperty.de/page/broker" target="blank">
+                                Mortgage lending
+                            </a></b></p>
+                    <p><b> <a href="https://scoperty.de/pages/immobilie-verkaufen" target="blank">
+                                Sell
+                            </a></b></p>
+                    <p><b> <a href="https://scoperty.de/pages/immobilie-kaufen" target="blank">
+                                Buy
+                            </a></b></p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<div style="background-color: #3dc988 ; padding: 4px;" class="fixed">
     <a href="https://www.facebook.com/scoperty" target="blank">
         <img alt="Collins Logo" src="/assets/img/facebook.png" style="width: 100px; height: 27px;
         object-fit: scale-down;" />
@@ -145,5 +166,4 @@
         <img alt="Collins Logo" src="/assets/img/youTube.png" style="width: 100px; height: 27px;
                         object-fit: scale-down;" />
     </a>
-
 </div>

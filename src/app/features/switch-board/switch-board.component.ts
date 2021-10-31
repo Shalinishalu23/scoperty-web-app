@@ -52,8 +52,8 @@ export class SwitchBoardComponent implements OnInit {
     { name: 'Find your pre-sale offers & Discover now ', formName: 'myjobs' },
     { name: 'Sell ​​right with Scoperty by your side', formName: 'alljobs' },
   ];
-  search = [{ name: 'Near by', formName: 'searchDrawingReview' }];
-  tools = [{ name: 'Services', formName: 'specification' }];
+  search = [{ name: 'Angular', formName: 'angular' }];
+  tools = [{ name: 'JS', formName: 'js' }];
   lastClickedIndex;
 
   /**

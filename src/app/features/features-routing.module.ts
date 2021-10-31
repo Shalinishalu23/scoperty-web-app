@@ -31,6 +31,10 @@ const routes: Routes = [
         path: 'contacts',
         component: ContactsComponent,
       },
+      {
+        path: 'reviews',
+        component: ContactsComponent,
+      },
     ],
   },
 ];

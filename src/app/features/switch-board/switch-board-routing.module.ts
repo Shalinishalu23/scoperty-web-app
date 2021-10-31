@@ -15,6 +15,14 @@ const routes: Routes = [
     path: 'pie',
     component: DataInputComponent,
   },
+  {
+    path: 'angular',
+    component: DataInputComponent,
+  },
+  {
+    path: 'js',
+    component: DataInputComponent,
+  },
 ];
 
 /**

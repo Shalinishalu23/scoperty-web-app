@@ -83,12 +83,6 @@ export class ToolBoxComponent implements OnInit {
         { name: 'Add/View Turnback', formName: 'turnbacks' },
         { name: 'View Folder' },
         { name: 'Add/View Memos', formName: 'memos' },
-        { name: 'Add/View LWR', formName: 'lwr' },
-        { name: 'Add/View Micro Request', formName: 'micro' },
-        { name: 'Make/View UTRC WRs', formName: 'utrc' },
-        { name: 'Add/View POR Form', formName: 'poc' },
-        { name: 'Add Stored Hardware', formName: 'hardware' },
-        { name: 'View Archive',formName: 'archive' },
       ];
     }
   }

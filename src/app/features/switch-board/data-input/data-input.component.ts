@@ -7,7 +7,8 @@ import { UtilityService } from 'src/app/services/utility.service';
 import { DatePipe } from '@angular/common';
 import { mainExpandModel } from 'src/app/shared/models/datainput-model';
 import { HttpClient } from '@angular/common/http';
-
+declare function angular(): any;
+declare function javascripts(): any;
 /**
  *
  *
@@ -139,7 +140,7 @@ export class DataInputComponent implements OnInit {
     ];
   }
 
-  onChange(fileList: FileList): void {
+  onChange(fileList: FileList, type: any): void {
     let file = fileList[0];
     let fileReader: FileReader = new FileReader();
     let self = this;
@@ -147,38 +148,11 @@ export class DataInputComponent implements OnInit {
       self.fileContent = fileReader.result;
       console.log('self.fileContent', self.fileContent);
     };
-    // this.replace0with5(self.fileContent);
     fileReader.readAsText(file);
+    if (type === 'angular') {
+      angular();
+    } else {
+      javascripts();
+    }
   }
-
-  // calculateAddedValue(number) {
-  //   console.log('1111', number)
-  //   number = 4001564;
-  //   console.log('2222', number);
-  //   // Amount to be added
-  //   let result = 0;
-  //   // Unit decimal place
-  //   let decimalPlace = 1;
-  //   if (number == 0) {
-  //     result += 5 * decimalPlace;
-  //   }
-  //   while (number > 0) {
-  //     if (number % 10 == 0) {
-  //       // A number divisible by 10, then
-  //       // this is a zero occurrence in
-  //       // the input
-  //       result += 5 * decimalPlace;
-  //     }
-  //     // Move one decimal place
-  //     number = Math.floor(number / 10);
-  //     decimalPlace *= 10;
-  //   }
-  //   console.log('result', result);
-  //   return result;
-  // }
-
-  // replace0with5(number) {
-  //   console.log('replace0with5', number)
-  //   return (number += this.calculateAddedValue(number));
-  // }
 }

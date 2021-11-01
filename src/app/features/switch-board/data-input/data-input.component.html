@@ -65,9 +65,9 @@
                             <button mat-raised-button color="primary" type="button"
                                 (change)="onChange($event.target.files)">Primary</button> -->
                             <input #file type="file" [hidden]="true" accept=".txt"
-                                (change)="onChange($event.target.files)">
-                            <button mat-raised-button color="primary" #upload (click)="file.click()">Upload text
-                                file</button>
+                                (change)="onChange($event.target.files,'angular')">
+                            <button mat-raised-button color="primary" #upload (click)="file.click()"> angular Upload
+                                text file</button>
                             <div>
                                 <h3>File Content</h3>
                                 <!-- <pre> {{fileContent}} </pre> -->
@@ -91,7 +91,7 @@
                             <button mat-raised-button color="primary" type="button"
                                 (change)="onChange($event.target.files)">Primary</button> -->
                             <input #file type="file" [hidden]="true" accept=".csv"
-                                (change)="onChange($event.target.files)">
+                                (change)="onChange($event.target.files,'js')">
                             <button mat-raised-button color="primary" (click)="file.click()">Upload csv
                                 file</button>
                             <div>

@@ -31,7 +31,7 @@ export class ContactsComponent implements OnInit {
           sub: 'Buying',
           tit: 'Eva, buyer from Cologne',
           subtit: ' Your Home | Starts with Scoperty',
-          img: 'https://scoperty.de/assets/images/home-page/reviewers/eva/eva.webp',
+          img: 'assets/img/pic1.jpg',
           con: 'Here Munich residents can see what their home is worth',
         },
         {
@@ -42,7 +42,7 @@ export class ContactsComponent implements OnInit {
           sub: 'selling',
           tit: 'Joe, seller from Berlin',
           subtit: ' Your Real Estate | Starts with Scoperty',
-          img: 'https://scoperty.de/assets/images/home-page/reviewers/gregor/gregor_jblnvq_c_scale,w_1474.webp',
+          img: 'assets/img/pic2.jpg',
           con: 'I found a option of contacting owners simply and ananomously via Scoperty',
         },
         {
@@ -54,7 +54,7 @@ export class ContactsComponent implements OnInit {
           sub: 'Rent',
           tit: 'Venisha, search for home from Hamburg',
           subtit: '  Your Broker Search | Starts with Scoperty',
-          img: 'https://scoperty.de/assets/images/home-page/reviewers/joerg/joerg_ti3nep_c_scale,w_1539.webp',
+          img: 'assets/img/pic3.jpg',
           con: ' Bidding for a villa in the neighborhood',
         },
         {
@@ -65,7 +65,7 @@ export class ContactsComponent implements OnInit {
           sub: 'your Property Valuation',
           tit: 'Shalu, land lord from Frankfurt',
           subtit: ' Your Property Purchase | Starts with Scoperty',
-          img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYtWSz8Txn8dd0TVWb-8H_bHEAtN3yrG6TSA&usqp=CAU',
+          img: 'assets/img/pic4.jpg',
           con: 'Real estate costs more and more. But there are clear differences',
         },
         {
@@ -76,7 +76,7 @@ export class ContactsComponent implements OnInit {
           sub: 'Property Valuation',
           tit: 'Lalli , from Erfurt',
           subtit: 'Your Property Purchase| Starts with Scoperty',
-          img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRug2LrwSJZYGJVJDuOy0mENDzJPPtsC_XZig&usqp=CAU',
+          img: 'assets/img/pic5.jpg',
           con: ' Scoperty now active nationwide',
         },
         {
@@ -87,7 +87,7 @@ export class ContactsComponent implements OnInit {
           sub: 'Property Selling',
           tit: 'Moully , from Paris',
           subtit: 'Your Property Selling| Starts with Scoperty',
-          img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtDw9fHlqz1ABB6xRwbO-u9osD3_OEiNl69g&usqp=CAU',
+          img: 'assets/img/pic6.jpg',
           con: 'Scoperty now everywhere',
         },
       ];

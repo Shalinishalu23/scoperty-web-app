@@ -34,3 +34,10 @@ Shalini M - shalini.m@Ltts.com
 ## To find unused imports
 1) Install "npm install -g typescript tslint tslint-etc"
 2) Run in cmd "tslint --config tslint-imports.json --fix --project ."
+
+Error while running app, run in cmd
+"set NODE_OPTIONS=--openssl-legacy-provider"
+then "ng serve"
+
+webpack error
+https://stackoverflow.com/questions/69750769/error-error0308010cdigital-envelope-routinesunsupported-angular
